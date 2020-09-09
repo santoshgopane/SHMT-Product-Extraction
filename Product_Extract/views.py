@@ -77,7 +77,7 @@ def Display(request):
         if not matched_medicines and matched_ingrid: #If only entered Ingridients. 
             all_row=[]
             for ingridient in matched_ingrid:
-                row = data[data['Ingredients']==ingridient]
+                row = data[data['salts']==ingridient]
                 all_row.append(row)
                 df = pd.concat(all_row)
         elif not matched_ingrid and matched_medicines: #If only entered Medicine name.
@@ -94,7 +94,7 @@ def Display(request):
                 all_raw.append(raw)
                 raw_df = pd.concat(all_raw)
             for ingridient in matched_ingrid:
-                row = raw_df[raw_df['Ingredients']==ingridient]
+                row = raw_df[raw_df['salts']==ingridient]
                 all_row.append(row)
                 df = pd.concat(all_row)
         else:
