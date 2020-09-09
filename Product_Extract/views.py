@@ -109,4 +109,5 @@ def Display(request):
         context = {'table_data':all_data}
         return render(request,'index.html',context)
     else:
+        messages.success(request,('Please Wait for Couple of Minutes after Enter. Be Patient!'))
         return render(request,'index.html')
