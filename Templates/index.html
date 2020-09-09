@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Test Weboage</title>
+</head>
+<style>
+
+.container{
+    margin-top: 3%;
+    width: 50%;
+    padding: 5px;
+}
+
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand"><h3>SHMT</h3></a>
+
+        </button>
+      </nav>
+{% if messages %}
+    {% for msg in messages %}
+      <br>
+      <div class="alert alert-warning alert-dismissable" role="alert">
+          <button class="close" data-dismiss="alert">
+              <small><sup>x</sup></small>
+          </button>          
+          {{ msg }}
+      </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+        <h2>Check Products Availability!</h2>
+        <form action="display" method="POST" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control " id="medName" value="" placeholder="Enter Medicine Name" name="medName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="ingrid" value="" placeholder="Enter Ingridients" name="ingrid">
+            </div>
+            <button type="submit" class="btn btn-success">Check</button>
+        </form>
+</div>
+<!-- Display Table below -->
+{% if table_data %}
+<table border='1' cellpadding='5' cellspacing='5'>
+    <td bgcolor="Teal Color">MedName</td>
+    <td bgcolor="Teal Color">Manufacturer</td>
+    <td bgcolor="Teal Color">Netmeds_price</td>
+    <td bgcolor="Teal Color">Salts</td>
+    <td bgcolor="Teal Color">Prescription Required</td>
+    <td bgcolor="Teal Color">Pack Size Label</td>
+    <td bgcolor="Teal Color">Quant in Pack</td>
+    <td bgcolor="Teal Color">In Stock</td>
+    <td bgcolor="Teal Color">Strength in mg</td>
+    <td bgcolor="Teal Color">Pack Size</td>
+    <td bgcolor="Teal Color">Pack Form</td>
+    {% for i in table_data %}
+    <tr>
+        <td bgcolor="lightgrey">{{i.medName}}</td>
+        <td bgcolor="lightgrey">{{i.manufacturer}}</td>
+        <td bgcolor="lightgrey">{{i.netmeds_price}}</td>
+        <td bgcolor="lightgrey">{{i.salts}}</td>
+        <td bgcolor="lightgrey">{{i.prescription_req}}</td>        
+        <td bgcolor="lightgrey">{{i.pack_size_label}}</td>
+        <td bgcolor="lightgrey">{{i.quantity_in_pack}}</td>
+        <td bgcolor="lightgrey">{{i.in_stock}}</td>
+        <td bgcolor="lightgrey">{{i.strength_in_mg}}</td>
+        <td bgcolor="lightgrey">{{i.PackSize}}</td>
+        <td bgcolor="lightgrey">{{i.PackForm}}</td>
+
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+</body>
+</html>
