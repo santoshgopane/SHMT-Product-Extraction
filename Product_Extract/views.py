@@ -23,7 +23,7 @@ def medicine_match(query, choice, limit=100):
 # All unique names stored in one list to forward to function.
 ingird_list = data['salts'].unique()
 
-#Function to get Ingridients upto 900 matches!
+#Function to get Ingridients upto 300 matches!
 def Ingrid_match(query, choice, limit=300):
     result1 = process.extract(query, choice, limit=limit)
     return result1
